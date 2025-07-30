@@ -378,3 +378,76 @@ window.addEventListener("load", () => {
     }, index * 200);
   });
 });
+
+// Enhanced form handling and animations
+document.addEventListener("DOMContentLoaded", function () {
+  // Form submission handling
+  const contactForm = document.querySelector(".contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const submitBtn = this.querySelector(".submit-btn");
+      const originalText = submitBtn.innerHTML;
+
+      // Show loading state
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      submitBtn.style.pointerEvents = "none";
+
+      // Simulate form submission
+      setTimeout(() => {
+        submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+        submitBtn.style.background = "var(--gradient-warm)";
+
+        // Reset form
+        setTimeout(() => {
+          this.reset();
+          submitBtn.innerHTML = originalText;
+          submitBtn.style.background = "var(--gradient-accent)";
+          submitBtn.style.pointerEvents = "auto";
+        }, 2000);
+      }, 2000);
+    });
+  }
+
+  // Template item click handling
+  const templateItems = document.querySelectorAll(".template-item");
+  templateItems.forEach((item) => {
+    item.addEventListener("click", function () {
+      const templateName = this.querySelector("h4").textContent;
+      console.log(`Selected template: ${templateName}`);
+      // Add your template selection logic here
+    });
+  });
+
+  // View more button
+  const viewMoreBtn = document.querySelector(".view-more-btn");
+  if (viewMoreBtn) {
+    viewMoreBtn.addEventListener("click", function () {
+      console.log("View all templates clicked");
+      // Add your navigation logic here
+    });
+  }
+
+  // Smooth scroll for internal links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    });
+  });
+
+  // Pause scroll animations on reduced motion preference
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const scrollRows = document.querySelectorAll(".scroll-row");
+    scrollRows.forEach((row) => {
+      row.style.animationPlayState = "paused";
+    });
+  }
+});
