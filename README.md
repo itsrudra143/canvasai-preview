@@ -26,5 +26,5 @@ It includes:
 ## 🚀 How to Run
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/canvas-ai-preview.git
+   git clone https://github.com/itsrudra143/canvas-ai-preview.git
    cd canvas-ai-preview
