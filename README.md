@@ -19,7 +19,6 @@ It includes:
 - **HTML5** – Structure
 - **CSS3** – Styling & responsive design
 - **JavaScript** – Animations & interactions (for mockup)
-- *(Optional)* Frameworks: TailwindCSS / Bootstrap (if used)
 
 ---
 
